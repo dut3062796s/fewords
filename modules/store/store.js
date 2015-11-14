@@ -1,12 +1,19 @@
 var path = require('path')
 var fs = require('fs')
 var mkdirp = require('mkdirp')
-var config = require('../../config/config.json')
-var configPath  = path.join(__dirname, '../../config/config.json')
 var fileName = '/fewords/fewords.json'
 
-var userDocumentPath = (process.env.HOME || process.env.USERPROFILE) + '/Documents'
+var userHomePath  = process.env.HOME || process.env.USERPROFILE
+var userDocumentPath = userHomePath + '/Documents'
+var configPath = path.join(userHomePath, '/.fewords-config.json')
+
+var config = {}
+if(fs.existsSync(configPath)) {
+    config = JSON.parse(fs.readFileSync(configPath))
+}
+
 var dataPath = path.join(config.dataPath || userDocumentPath, fileName)
+
 
 function createDataFile(p, d) {
     if(!fs.existsSync(p)) {
