@@ -1,3 +1,13 @@
+fis.config.set('project.ignore', ['output/**', '.git/**', 'fis-conf.js']);
+
+fis.match('node_modules/**', {
+    release : '$&',
+    isJsLike : false,
+    isHtmlLike : false,
+    isCssLike : false,
+    standard: false
+})
+
 // 启用插件
 fis.hook('relative');
 

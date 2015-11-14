@@ -22,6 +22,10 @@ fewords是few words两个词拼成的名字，是个功能极其简单的纯文�
 - 编辑:
     ![截图2](assets/captures/capture2.png)
 
+## Tips
+- 所有输入和编辑的地方按`ESC`键都执行保存操作
+- 双击文字区域进入编辑模式
+
 ## Todo
 - 翻页
 - 日历选择
@@ -33,11 +37,10 @@ fewords是few words两个词拼成的名字，是个功能极其简单的纯文�
 - 安装fis3 :  `npm install -g fis3`
 - 安装fis的插件: `npm install -g fis3-hook-relative` 和 `npm install fis-parser-sass -g`
 - 进入项目根目录: `npm install`
-- fis编译: `fis3 release -wd ../fewords-build`
-- 拷贝node_modules目录到fewords-build目录 `cp -ap node_modules ../fewords-build/`
-- fis编译后预览: `cd ../fewords-build` 后执行 `electron ./`
-- 编译app: `cd ../fewords-build` 后执行 `npm run build`
-- 打包dmg: `cd ../fewords-build` 后执行 `npm run pack`
+- fis编译: `fis3 release -wd ../build` 第一次编译有点慢，因为node_modules目录也包含在内
+- fis编译后预览: `cd ../build` 后执行 `electron ./`
+- 编译app: `cd ../build` 后执行 `npm run build`
+- 打包dmg: `cd ../build` 后执行 `npm run pack`
 
 ## Thanks
 - [vue](http://vuejs.org/)
