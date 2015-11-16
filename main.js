@@ -2,6 +2,7 @@ var app = require('app')
 var BrowserWindow = require('browser-window')
 var Tray = require('tray')
 var ipc = require('ipc')
+var Menu = require("menu");
 
 app.dock.hide()
 
@@ -53,6 +54,29 @@ app.on('ready', function () {
     ipc.on('toggleView', function () {
         win.isVisible() ? win.hide() : win.show()
     })
+
+    // Create the Application's main menu
+    //解决不能剪贴板操作的问题
+    var template = [{
+        label: "Application",
+        submenu: [
+            { label: "About Application", selector: "orderFrontStandardAboutPanel:" },
+            { type: "separator" },
+            { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+        ]}, {
+        label: "Edit",
+        submenu: [
+            { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+            { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+            { type: "separator" },
+            { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+            { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+            { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+            { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+        ]}
+    ];
+
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 })
 
 
