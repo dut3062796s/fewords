@@ -1,4 +1,4 @@
-var Guid = require('guid')
+var uuid = require('node-uuid')
 var Vue = require('vue')
 
 function randomColor(a) {
@@ -32,7 +32,7 @@ module.exports = Vue.extend({
             }
 
             this.$root.$broadcast('add', {
-                id : Guid.create().toString(),
+                id : uuid.v1(),
                 content : this.content,
                 timestamp : Date.now(),
                 star : false,

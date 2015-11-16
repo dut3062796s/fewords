@@ -8,5 +8,10 @@
             { "x": 420, "y": 162, "type": "link", "path": "/Applications" },
             { "x": 99, "y": 162, "type": "file" }
         ]
+    },
+    "win" : {
+        "title" : "fewords",
+        "icon" : "assets/images/win.ico"
+      }
     }
 }

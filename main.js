@@ -4,7 +4,10 @@ var Tray = require('tray')
 var ipc = require('ipc')
 var Menu = require("menu");
 
-app.dock.hide()
+var isMac =  process.platform == 'darwin'
+var isWindows = process.platform == 'win32'
+
+app.dock && app.dock.hide()
 
 app.on('window-all-closed', function () {
     app.quit()
@@ -14,32 +17,48 @@ var win = null
 var tray = null
 app.on('ready', function () {
     var screen = require('screen')
-    var x = screen.getPrimaryDisplay().workAreaSize.width / 2 - 250,
-        win = new BrowserWindow({
-            "x": x,
-            "y": 20,
-            "width": 500,
-            "height": 600,
-            "frame": false,
-            "resizable": false,
-            "center": false,
-            "show": false
-        })
+    var size = screen.getPrimaryDisplay().workAreaSize
+    var width = 500
+    var height = 600
+    var defaultX = isMac ? size.width / 2 - width/2 : size.width - width - 10
+    var defaultY = isMac ? 20 : size.height - height - 10
+
+    win = new BrowserWindow({
+        "x": defaultX,
+        "y": defaultY,
+        "width": width,
+        "height": height,
+        "frame": false,
+        "resizable": false,
+        "center": false,
+        "skip-taskbar" : true,
+        "show": false
+    })
 
 
     win.loadUrl('file://' + app.getAppPath() + '/pages/index.html')
 
-    tray = new Tray(app.getAppPath() + '/assets/images/ebook.png')
+    tray = new Tray(app.getAppPath() + (isMac ? '/assets/images/mac-tray.png' : '/assets/images/win-tray.png'))
+    tray.setToolTip('fewords app')
 
     tray.on('clicked', function (e, bound) {
-        win.isVisible() ? win.hide() : win.show()
         var x = bound.x + bound.width / 2 - win.getBounds().width / 2
         var y = bound.y + bound.height - 1
+        if(isWindows) {
+            x = Math.min(x, defaultX)
+            y = defaultY
+        }
         win.setPosition(x, y)
+        win.isVisible() ? win.hide() : win.show()
     })
 
+    // win.openDevTools()
+
+    //win下点击tary会触发blur
     win.on('blur', function () {
-        win.hide()
+        setTimeout(function() {
+            win.hide()
+        }, isMac ? 0 : 200)
     })
 
     win.on('closed', function () {
@@ -47,6 +66,8 @@ app.on('ready', function () {
     })
 
     ipc.on('quit', function () {
+        tray && tray.destroy()
+        tray = null
         win.close()
         app.quit()
     })
@@ -55,7 +76,6 @@ app.on('ready', function () {
         win.isVisible() ? win.hide() : win.show()
     })
 
-    // Create the Application's main menu
     //解决不能剪贴板操作的问题
     var template = [{
         label: "Application",

@@ -6,7 +6,8 @@ fewords是few words两个词拼成的名字，是个功能极其简单的笔记�
 这是个本地笔记本，没有远程服务器，不过可以把存储目录设置到云盘来同步。
 
 ## Download
-- for mac: [fewords.dmg](http://pan.baidu.com/s/1eQjVu2A)
+- [for mac](http://pan.baidu.com/s/1sjoY96P)
+- [for win](http://pan.baidu.com/s/1mgvowuk)
 
 ## Features
 - 支持markdown
@@ -31,11 +32,11 @@ fewords是few words两个词拼成的名字，是个功能极其简单的笔记�
 - 日历选择
 - 日期分隔符
 - 代码语法高亮
-- for windows
+- ~~~for windows~~~
 
 ## Development
 - 安装fis3 :  `npm install -g fis3`
-- 安装fis的插件: `npm install -g fis3-hook-relative` 和 `npm install fis-parser-sass -g`
+- 安装fis的插件: `npm install -g fis3-hook-relative` 和 `npm install fis-parser-node-sass -g`
 - 进入项目根目录: `npm install`
 - fis编译: `fis3 release -wd ../build` 第一次编译有点慢，因为node_modules目录也包含在内
 - fis编译后预览: `cd ../build` 后执行 `electron ./`
