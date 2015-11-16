@@ -17,15 +17,14 @@ if(configFile.exist()) {
         globalKey: {}
     })
 }
-console.log(config.dataPath)
 
 module.exports = {
     dataFileName : DATA_NAME,
     file : configFile,
-    recordKey : function(name, value) {
-        //TODO
+    recordKey : function(name, key) {
+        config.globalKey[name] = key
+        configFile.write(config)
     }
 }
-
 
 

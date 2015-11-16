@@ -35,6 +35,9 @@ var Setting = Vue.extend({
                 }
             })
         }
+    },
+    components: {
+        'shortcut': require('../modules/shortcut/shortcut'),
     }
 })
 

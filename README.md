@@ -6,7 +6,7 @@ fewords是few words两个词拼成的名字，是个功能极其简单的笔记�
 这是个本地笔记本，没有远程服务器，不过可以把存储目录设置到云盘来同步。
 
 ## Download
-- for mac: [fewords.dmg](http://pan.baidu.com/s/1o68bvPS)
+- for mac: [fewords.dmg](http://pan.baidu.com/s/1eQjVu2A)
 
 ## Features
 - 支持markdown
@@ -26,7 +26,7 @@ fewords是few words两个词拼成的名字，是个功能极其简单的笔记�
 - 双击文字区域进入编辑模式
 
 ## Todo
-- 全局快捷键
+- ~~~全局快捷键~~~
 - 翻页
 - 日历选择
 - 日期分隔符

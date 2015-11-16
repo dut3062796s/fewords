@@ -4,7 +4,6 @@
 @import "../modules/talkbox/talkbox";
 @import "../modules/talklist/talklist";
 @import "../modules/talk/talk";
-@import "../assets/css/griffin";
 
 @font-face {
     font-family: 'iconfont';
@@ -46,11 +45,13 @@ body {
 
 .setting-panel {
     box-sizing: border-box;
-    background: #3292c8;
     height: 100%;
+    background: #f6f6f6;
     .nav-bar {
         overflow: hidden;
-        border-bottom: 2px groove #ccc;
+        background: #B2E0E1;
+        //border-bottom: 2px groove #ccc;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
         a {
             height: 30px;
             line-height: 30px;
@@ -73,18 +74,25 @@ body {
 
     .setting-area {
         padding: 50px;
+        margin-top: 100px;
         text-align: center;
-        .just-for-fun {
-            margin-top: 70px;
-        }
-        button {
-            margin-top: -28px;
-        }
-
-        .about {
-            margin-top: 50px;
-            color: #ccc;
-            line-height: 1.2;
+        .section {
+            margin-bottom: 50px;
+            button {
+                width: 200px;
+            }
+            input {
+                width: 200px;
+                box-sizing: border-box;
+                padding: 0 10px;
+                height: 36px;
+                font-family: "Roboto","Helvetica","Arial",sans-serif;
+                font-size: 14px;
+                outline: none;
+                border: 1px solid #fff;
+                background-color: #ECECEC;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14) inset, 0 3px 1px -2px rgba(0, 0, 0, 0.2) inset, 0 1px 5px 0 rgba(0, 0, 0, 0.12) inset;
+            }
         }
     }
 }

@@ -1,0 +1,2 @@
+<button v-show="!editing" @click="toggleEdit"  class="mdl-button mdl-js-button mdl-button--raised">设置快捷键</button>
+<input v-show="editing" v-el:ipt value="{{keys.toggleView}}" @keydown.prevent.stop="record('toggleView', $event)" @blur="save('toggleView')" type="text" />
