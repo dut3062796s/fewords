@@ -1,2 +1,3 @@
 <button v-show="!editing" @click="toggleEdit"  class="mdl-button mdl-js-button mdl-button--raised">设置快捷键</button>
-<input v-show="editing" v-el:ipt value="{{keys.toggleView}}" @keydown.prevent.stop="record('toggleView', $event)" @blur="save('toggleView')" type="text" />
+<div v-show="!editing" class="tip">当前快捷键: {{keys.toggleView || '无'}}</div>
+<input v-show="editing" placeholder="无" v-el:ipt value="{{keys.toggleView}}" @keydown.prevent.stop="record('toggleView', $event)" @blur="save('toggleView')" type="text" />

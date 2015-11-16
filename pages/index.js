@@ -4,6 +4,8 @@ var store = require('../modules/store/store')
 var remote = require('remote')
 var dialog = remote.require('dialog')
 var app = remote.require('app')
+var configFile =  require('../modules/config/config')
+var path = require('path')
 
 var Index = Vue.extend({
     template: __inline('./page1.html'),
@@ -16,6 +18,11 @@ var Index = Vue.extend({
 
 var Setting = Vue.extend({
     template: __inline('./page2.html'),
+    data : function() {
+        return {
+            path : configFile.read().dataPath
+        }
+    },
     methods: {
         quit: function () {
             var ipc = require('ipc')
@@ -41,7 +48,11 @@ var Setting = Vue.extend({
     }
 })
 
-var router = new VueRouter()
+var router = new VueRouter({
+    canReuse : function() {
+        return true
+    }
+})
 router.map({
     '/index': {
         component: Index

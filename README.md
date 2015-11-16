@@ -38,7 +38,8 @@ fewords是few words两个词拼成的名字，是个功能极其简单的笔记�
 - 安装fis3 :  `npm install -g fis3`
 - 安装fis的插件: `npm install -g fis3-hook-relative` 和 `npm install fis-parser-node-sass -g`
 - 进入项目根目录: `npm install`
-- fis编译: `fis3 release -wd ../build` 第一次编译有点慢，因为node_modules目录也包含在内
+- fis编译: `fis3 release -wd ../build`
+- 复制`node_modules`目录到`../build`目录下
 - fis编译后预览: `cd ../build` 后执行 `electron ./`
 - 编译app: `cd ../build` 后执行 `npm run build`
 - 打包dmg: `cd ../build` 后执行 `npm run pack`

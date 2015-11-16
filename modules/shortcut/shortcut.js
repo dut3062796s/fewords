@@ -2,24 +2,31 @@ var remote = require('remote')
 var globalShortcut = remote.require('global-shortcut')
 var ipc = require('ipc')
 var keyMap = require('./keymap')
-var config = require('../config/config')
+var configFile = require('../config/config')
+var config = configFile.read()
 var Vue = require('vue')
 
 var registerCache = {}
 
 function register(name, key) {
-    globalShortcut.unregister(key)
     if (registerCache[name]) globalShortcut.unregister(registerCache[name])
-    globalShortcut.register(key, function () {
-        ipc.send(name)
-    })
-    registerCache[name] = key
+    if (key.trim()) {
+        globalShortcut.unregister(key)
+        globalShortcut.register(key, function () {
+            ipc.send(name)
+        })
+        registerCache[name] = key
+    }
 }
 
 //注册上一次记录的事件
-var recordedKeys = config.file.read().globalKey
+var recordedKeys = config.globalKey
 for (var i in recordedKeys) {
     register(i, recordedKeys[i])
+}
+
+if (!recordedKeys.toggleView) {
+    recordedKeys.toggleView = ''
 }
 
 module.exports = Vue.extend({
@@ -42,6 +49,9 @@ module.exports = Vue.extend({
         },
         record: function (name, e) {
             var key = keyMap(e)
+            if (key == 'backspace') {
+                key = ''
+            }
             this.keys[name] = key
             e.preventDefault()
             return false
@@ -49,7 +59,8 @@ module.exports = Vue.extend({
         save: function (name) {
             var key = this.keys[name]
             register(name, key)
-            config.recordKey(name, key)
+            config.globalKey[name] = key
+            configFile.write(config)
             this.editing = false
         }
     }

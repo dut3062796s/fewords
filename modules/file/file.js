@@ -7,6 +7,7 @@ function File(p) {
 }
 
 File.prototype = {
+    data : null,
     exist: function () {
         return fs.existsSync(this.path)
     },
@@ -15,16 +16,19 @@ File.prototype = {
             mkdirp.sync(path.dirname(this.path))
             fs.writeFileSync(this.path, JSON.stringify(data), {mode: 511})
             console.log('create ', this.path, ' success!')
+            this.data = data
             return data
         }
     },
     write: function (data) {
         fs.writeFileSync(this.path, JSON.stringify(data), {mode: 511})
+        this.data = data
         console.log('save ', this.path, ' success!')
     },
     read: function () {
         if (this.exist()) {
-            return JSON.parse(fs.readFileSync(this.path))
+            this.data = JSON.parse(fs.readFileSync(this.path))
+            return this.data
         }
         return {}
     }

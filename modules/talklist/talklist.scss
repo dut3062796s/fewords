@@ -58,7 +58,31 @@
     #tt4.active + .search-outer {
         width: 150px;
     }
+
+    .settings-btn {
+        position: absolute;
+        right: 0;
+        top: 130px;
+        white-space: nowrap;
+        a {
+            display: inline-block;
+            padding: 5px 10px;
+            color: #807F80;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            &.active {
+                color: #FF3B80;
+            }
+            &.refresh {
+                &:active {
+                    color: #FF3B80;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
 }
+
 
 
 //.fade-transition {

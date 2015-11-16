@@ -15,6 +15,12 @@
     <span class="search-outer">
         <input class="search-input" v-el:input v-model="searchKey" v-on:keyup.esc="toggleSearch" debounce="100" />
     </span>
+
+    <div class="settings-btn">
+        <a @click="refresh" class="refresh"><i class="icon">&#xe61f;</i></a>
+        <a @click="awalysOnTop"  :class="{'active' : alwaysOnTop}"><i class="icon">&#xe627;</i></a>
+        <a v-link="{ path: '/setting' }"><i class="icon">&#xe608;</i></a>
+    </div>
 </div>
 <div class="talklist">
         <talk v-for="item in items | filterBy searchKey in 'content' | orderBy 'timestamp' now | starFilter" :talk.sync="item" transition="fade"></talk>

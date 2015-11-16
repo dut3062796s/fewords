@@ -16,7 +16,6 @@
     "pack:win": "npm run build:win && electron-builder \"../dist/win/fewords-win32-x64\" --platform=win --out=\"../dist/win\" --config=packager.json"
   },
   "dependencies": {
-    "electron-drag": "1.0.0",
     "marked": "^0.3.5",
     "mkdirp": "^0.5.1",
     "moment": "^2.10.6",

@@ -1,10 +1,11 @@
 var path = require('path')
 var File = require('../file/file')
-var config = require('../config/config')
-var configData = config.file.read()
+var configFile = require('../config/config')
+var config= configFile.read()
+var dataName ='fewords.json'
 var data = []
 
-var dataFile = new File(configData.dataPath)
+var dataFile = new File(path.join(config.dataPath, dataName))
 if(dataFile.exist()) {
     data = dataFile.read()
 } else {
@@ -12,6 +13,10 @@ if(dataFile.exist()) {
 }
 
 module.exports = {
+    refresh : function() {
+        data = dataFile.read()
+        return data
+    },
     get : function() {
         return data
     },
@@ -27,9 +32,9 @@ module.exports = {
         dataFile.write(data)
     },
     changePath: function(p, cb) {
-        config.dataPath = path.join(p, config.dataFileName)
-        config.file.write(config)
-        dataFile.path = config.dataPath
+        config.dataPath = p
+        configFile.write(config)
+        dataFile.path = path.join(config.dataPath, dataName)
         if(!dataFile.exist()) {
             dataFile.create(data)
         } else {

@@ -15,6 +15,7 @@ app.on('window-all-closed', function () {
 
 var win = null
 var tray = null
+var alwaysOnTop = false
 app.on('ready', function () {
     var screen = require('screen')
     var size = screen.getPrimaryDisplay().workAreaSize
@@ -56,6 +57,7 @@ app.on('ready', function () {
 
     //win下点击tary会触发blur
     win.on('blur', function () {
+        if(alwaysOnTop) return
         setTimeout(function() {
             win.hide()
         }, isMac ? 0 : 200)
@@ -74,6 +76,11 @@ app.on('ready', function () {
 
     ipc.on('toggleView', function () {
         win.isVisible() ? win.hide() : win.show()
+    })
+
+    ipc.on('alwaysOnTop', function() {
+        alwaysOnTop = !alwaysOnTop
+        win.setAlwaysOnTop(alwaysOnTop)
     })
 
     //解决不能剪贴板操作的问题
