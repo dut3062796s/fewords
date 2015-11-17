@@ -3,7 +3,7 @@ var globalShortcut = remote.require('global-shortcut')
 var ipc = require('ipc')
 var keyMap = require('./keymap')
 var configFile = require('../config/config')
-var config = configFile.read()
+var config = configFile.data
 var Vue = require('vue')
 
 var registerCache = {}

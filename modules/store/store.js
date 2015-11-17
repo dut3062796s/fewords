@@ -1,16 +1,11 @@
 var path = require('path')
 var File = require('../file/file')
 var configFile = require('../config/config')
-var config= configFile.read()
+var config= configFile.data
 var dataName ='fewords.json'
-var data = []
 
-var dataFile = new File(path.join(config.dataPath, dataName))
-if(dataFile.exist()) {
-    data = dataFile.read()
-} else {
-    data = dataFile.create([])
-}
+var dataFile = new File(path.join(config.dataPath, dataName), [])
+var data = dataFile.data
 
 module.exports = {
     refresh : function() {
@@ -35,11 +30,7 @@ module.exports = {
         config.dataPath = p
         configFile.write(config)
         dataFile.path = path.join(config.dataPath, dataName)
-        if(!dataFile.exist()) {
-            dataFile.create(data)
-        } else {
-            data = dataFile.read()
-        }
+		data = dataFile.createWidthData(data)
         cb && cb()
     },
 }

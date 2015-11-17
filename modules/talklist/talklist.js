@@ -37,11 +37,11 @@ module.exports = Vue.extend({
             }
         },
         refresh: function () {
-            this.items = []
+            //this.items = []
             var self = this
-            setTimeout(function () {
+            //setTimeout(function () {
                 self.items = store.refresh()
-            }, 50)
+            //}, 50)
         },
         awalysOnTop: function () {
             this.alwaysOnTop = !this.alwaysOnTop
