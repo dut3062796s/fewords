@@ -5,13 +5,12 @@
         "background" : "assets/images/mac-installer.png",
         "icon-size": 80,
         "contents": [
-            { "x": 420, "y": 162, "type": "link", "path": "/Applications" },
-            { "x": 99, "y": 162, "type": "file" }
+            { "x": 450, "y": 182, "type": "link", "path": "/Applications" },
+            { "x": 130, "y": 182, "type": "file" }
         ]
     },
     "win" : {
         "title" : "fewords",
         "icon" : "assets/images/win.ico"
-      }
     }
 }
