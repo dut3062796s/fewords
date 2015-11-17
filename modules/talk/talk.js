@@ -2,6 +2,7 @@ var Vue = require('vue')
 var marked = require('marked')
 var moment = require('moment')
 var emoji = require('node-emoji')
+var Prism = require('prismjs')
 const MIN_HEIGHT = 32
 
 module.exports = Vue.extend({
@@ -17,6 +18,17 @@ module.exports = Vue.extend({
         marked: marked,
         emoji:  function(value) {
           return emoji.emojify(value)
+        },
+        prism : function(value) {
+            var re  = /\`\`\`([a-z]+)([\s\S]+)\`\`\`/igm
+            value = value.replace(re, function($0, lang, code) {
+                if(Prism.languages[lang]){
+                    var html = Prism.highlight(code.trim(), Prism.languages[lang])
+                    return '<code class="code-block" data-type="' + lang + '">' + html + '</code>'
+                }
+                return $0
+            })
+            return  value
         },
         moment: function (time) {
             moment.locale('zh-cn')

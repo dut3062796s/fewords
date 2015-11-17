@@ -443,19 +443,11 @@
 }
 
 .markdown-body code {
-    padding: 0;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding: 0.2em;
     margin: 0;
     font-size: 85%;
-    background-color: rgba(0,0,0,0.04);
+    background-color: rgba(255,255,255,0.4);
     border-radius: 3px;
-}
-
-.markdown-body code:before,
-.markdown-body code:after {
-    letter-spacing: -0.2em;
-    content: "\00a0";
 }
 
 .markdown-body pre>code {
@@ -501,11 +493,6 @@
     word-wrap: normal;
     background-color: transparent;
     border: 0;
-}
-
-.markdown-body pre code:before,
-.markdown-body pre code:after {
-    content: normal;
 }
 
 .markdown-body kbd {

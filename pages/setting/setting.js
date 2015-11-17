@@ -18,6 +18,7 @@ module.exports = Vue.extend({
             ipc.send('quit')
         },
         selectDirectory: function () {
+            var self = this
             dialog.showOpenDialog({properties: ['openDirectory']}, function (path) {
                 if (path && path[0]) {
                     store.changePath(path[0], function() {
@@ -27,6 +28,7 @@ module.exports = Vue.extend({
                             buttons : ['ok'],
                             message : '目录设置成功!'
                         })
+                        self.path = path[0]
                     })
                 }
             })
