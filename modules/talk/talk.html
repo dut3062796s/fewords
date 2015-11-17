@@ -16,7 +16,7 @@
         </div>
     </div>
     <div v-else>
-        <textarea v-model="talk.content" v-on:keyup.esc="save" v-el:textarea debounce="30" :style="{ height: contentHeight + 'px' }"></textarea>
+        <textarea v-model="talk.content" v-on:keydown.tab="tabKey" v-on:keyup.esc="save" v-el:textarea debounce="30" :style="{ height: contentHeight + 'px' }"></textarea>
         <div class="line"></div>
         <div class="toolbar t2">
             <a @click.stop="save">

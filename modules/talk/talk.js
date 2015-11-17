@@ -58,6 +58,18 @@ module.exports = Vue.extend({
         save: function () {
             this.isEdit = false
             this.$dispatch('save', this.talk.id)
+        },
+        tabKey : function(e) {
+            var el = e.target
+            var start = el.selectionStart
+            var end = el.selectionEnd
+            var value = el.value
+            this.talk.content = value.substring(0, start) + "\t" + value.substring(end)
+            Vue.nextTick(function() {
+                el.selectionStart = el.selectionEnd = start + 1
+            })
+            e.preventDefault()
+            return false
         }
     }
 })

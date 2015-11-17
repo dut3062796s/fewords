@@ -1,5 +1,5 @@
 <div class="talkbox">
-    <textarea v-model="content" v-on:keyup.esc="submit" v-el:textarea debounce="30" placeholder="just say something"></textarea>
+    <textarea v-model="content" v-on:keydown.tab="tabKey" v-on:keyup.esc="submit" v-el:textarea debounce="30" placeholder="just say something"></textarea>
     <div class="line"></div>
     <div class="submit-outer">
         <!--<a @click="submit" class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect">-->

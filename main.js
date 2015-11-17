@@ -53,7 +53,7 @@ app.on('ready', function () {
         win.isVisible() ? win.hide() : win.show()
     })
 
-     win.openDevTools()
+     //win.openDevTools()
 
     //win下点击tary会触发blur
     win.on('blur', function () {
