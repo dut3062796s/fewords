@@ -6,8 +6,9 @@ fewords是few words两个词拼成的名字，是个功能极其简单的笔记�
 这是个本地笔记本，没有远程服务器，不过可以把存储目录设置到云盘来同步。
 
 ## Download
-- [for mac](http://pan.baidu.com/s/1mgjdp7U)
-- [for win](http://pan.baidu.com/s/1mgvowuk)
+- [for mac](http://pan.baidu.com/s/1jGpnbJg)
+- [for win](http://pan.baidu.com/s/1gd8qaD9)
+- 如果是之前安装过旧版本的话，请删除`~/.fewords-config.json`文件。
 
 ## Features
 - 支持markdown
